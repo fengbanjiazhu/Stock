@@ -1,8 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import { Text, View } from "./Themed";
 import Colors from "../constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
 import { MonoText } from "./StyledText";
+import { Link } from "expo-router";
 
 import { type StockListItem } from "../types/types";
 
@@ -17,26 +18,28 @@ function StockListItem({ stock }: StockListItem) {
   const positive = change > 0;
 
   return (
-    <View style={styles.root}>
-      {/* Left */}
-      <View style={{ flex: 1 }}>
-        <Text style={styles.symbol}>
-          {stock.symbol}
-          {"  "} <AntDesign name="staro" size={18} color="grey" />
-        </Text>
+    <Link href={"/stock"} asChild>
+      <Pressable style={styles.root}>
+        {/* Left */}
+        <View style={{ flex: 1 }}>
+          <Text style={styles.symbol}>
+            {stock.symbol}
+            {"  "} <AntDesign name="staro" size={18} color="grey" />
+          </Text>
 
-        <Text style={{ color: "grey" }}>{stock.name}</Text>
-      </View>
+          <Text style={{ color: "grey" }}>{stock.name}</Text>
+        </View>
 
-      {/* Right */}
-      <View style={{ alignItems: "flex-end" }}>
-        <MonoText>{closePrice}</MonoText>
-        <MonoText style={{ color: positive ? "green" : "red" }}>
-          {positive ? "+" : ""}
-          {change}%
-        </MonoText>
-      </View>
-    </View>
+        {/* Right */}
+        <View style={{ alignItems: "flex-end" }}>
+          <MonoText>{closePrice}</MonoText>
+          <MonoText style={{ color: positive ? "green" : "red" }}>
+            {positive ? "+" : ""}
+            {change}%
+          </MonoText>
+        </View>
+      </Pressable>
+    </Link>
   );
 }
 
