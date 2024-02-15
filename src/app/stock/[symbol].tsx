@@ -3,7 +3,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { StyleSheet } from "react-native";
 
 import top5 from "@/assets/data/top5.json";
-import StockListItem from "../components/StockListItem";
+import StockListItem from "../../components/StockListItem";
 
 const StockDetails = () => {
   const { symbol } = useLocalSearchParams();

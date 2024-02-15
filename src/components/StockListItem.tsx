@@ -18,7 +18,7 @@ function StockListItem({ stock }: StockListItem) {
   const positive = change > 0;
 
   return (
-    <Link href={`/${stock.symbol}`} asChild>
+    <Link href={`/stock/${stock.symbol}`} asChild>
       <Pressable style={styles.root}>
         {/* Left */}
         <View style={{ flex: 1 }}>
