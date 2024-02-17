@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 
 import top5 from "@/assets/data/top5.json";
 import StockListItem from "../../components/StockListItem";
+import Graph from "@/src/components/Graph";
 
 const StockDetails = () => {
   const { symbol } = useLocalSearchParams();
@@ -18,6 +19,7 @@ const StockDetails = () => {
     <View style={styles.root}>
       <Stack.Screen options={{ title: `${symbol} details`, headerBackTitleVisible: false }} />
       <StockListItem stock={stock} />
+      <Graph />
     </View>
   );
 };
