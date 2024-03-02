@@ -8,7 +8,7 @@ type FiftyTwoWeek {
   range: String
 }
 
-type Root {
+type Quote {
   average_volume: Date
   change: Float
   close: Float
@@ -29,7 +29,19 @@ type Root {
   volume: Date
 }
 
+type Quotes {
+  name: String
+  value: Quote
+}
+
 type Query {
-  myQuery(apikey: String, symbol: String): Root
-    @rest(endpoint: "https://api.twelvedata.com/quote")
+  quote(symbol: String): Quote
+    @rest(endpoint: "https://api.twelvedata.com/quote", configuration: "twelvedata")
+
+  quotes(symbol: String): [Quotes]
+    @rest(
+      endpoint: "https://api.twelvedata.com/quote"
+      configuration: "twelvedata"
+      transforms: [{ pathpattern: ["<>*"], editor: "objectToArray" }]
+    )
 }
