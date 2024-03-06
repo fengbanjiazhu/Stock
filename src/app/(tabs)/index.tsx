@@ -6,8 +6,6 @@ import StockListItem from "@/src/components/StockListItem";
 
 import { useQuery, gql } from "@apollo/client";
 
-import top5 from "@/assets/data/top5.json";
-
 // export type StockDataItem = ReturnType<typeof>
 
 const query = gql`

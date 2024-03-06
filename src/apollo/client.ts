@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { STEPZEN_API_KEY } from "@env";
 
 const client = new ApolloClient({
