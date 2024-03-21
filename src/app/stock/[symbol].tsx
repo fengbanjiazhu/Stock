@@ -1,19 +1,37 @@
 import { View, Text } from "@/src/components/Themed";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 
-import top5 from "@/assets/data/top5.json";
 import StockListItem from "../../components/StockListItem";
 import Graph from "@/src/components/Graph";
+import { useQuery, gql } from "@apollo/client";
+
+const query = gql`
+  query quote($symbol: String) {
+    quote(symbol: $symbol) {
+      name
+      symbol
+      close
+      percent_change
+    }
+  }
+`;
 
 const StockDetails = () => {
   const { symbol } = useLocalSearchParams();
+  const { data, error, loading } = useQuery(query, { variables: { symbol } });
 
-  const stock = top5[symbol];
+  if (loading) {
+    return <ActivityIndicator />;
+  }
 
-  if (!stock) {
+  if (error) {
     return <Text>Could not found the symbol : {symbol}</Text>;
   }
+
+  const stock = data.quote;
+
+  console.log(stock);
 
   return (
     <View style={styles.root}>

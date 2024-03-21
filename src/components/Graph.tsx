@@ -30,8 +30,6 @@ const Graph = ({}: GraphProps) => {
 
   return (
     <View>
-      <Text>Graph</Text>
-
       <MonoText style={{ fontSize: 20, fontWeight: "bold", color: "#017560" }}>
         ${selectPoint?.value.toFixed(1) ?? "--"}
       </MonoText>

@@ -13,6 +13,7 @@ const formatDataString = (str: string, tofixed: number = 1): number => {
 };
 
 function StockListItem({ stock }: StockListItem) {
+  console.log(stock);
   const closePrice = formatDataString(stock.close);
   const change = formatDataString(stock.percent_change);
   const positive = change > 0;
