@@ -19,6 +19,7 @@ const query = gql`
 
 const StockDetails = () => {
   const { symbol } = useLocalSearchParams();
+  console.log(symbol);
   const { data, error, loading } = useQuery(query, { variables: { symbol } });
 
   if (loading) {
@@ -31,13 +32,11 @@ const StockDetails = () => {
 
   const stock = data.quote;
 
-  console.log(stock);
-
   return (
     <View style={styles.root}>
       <Stack.Screen options={{ title: `${symbol} details`, headerBackTitleVisible: false }} />
       <StockListItem stock={stock} />
-      <Graph />
+      <Graph symbol={symbol} />
     </View>
   );
 };
