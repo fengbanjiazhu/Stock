@@ -25,5 +25,8 @@ type ValuesEntry {
 
 type Query {
   time_series(interval: String, symbol: String): TimeSeries
-    @rest(endpoint: "https://api.twelvedata.com/time_series", configuration: "twelvedata")
+    @rest(
+      endpoint: "https://api.twelvedata.com/time_series"
+      configuration: "twelvedata"
+    )
 }
