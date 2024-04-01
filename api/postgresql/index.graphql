@@ -2,12 +2,9 @@ type Favorites {
   id: Int!
   symbol: String!
   user_id: String!
+  quote: Quote @materializer(query: "quote", arguments: [{ name: "symbol", field: "symbol" }])
 }
 
-"""
-The following queries are just a set of examples of how to access your schema.
-Feel free to modify them or aggregate more.
-"""
 type Query {
   " Queries for type 'Favorites' "
   favoritesByUser_id(user_id: String!): [Favorites]

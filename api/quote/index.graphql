@@ -36,10 +36,7 @@ type Quotes {
 
 type Query {
   quote(symbol: String): Quote
-    @rest(
-      endpoint: "https://api.twelvedata.com/quote"
-      configuration: "twelvedata"
-    )
+    @rest(endpoint: "https://api.twelvedata.com/quote", configuration: "twelvedata")
   quotes(symbol: String): [Quotes]
     @rest(
       endpoint: "https://api.twelvedata.com/quote"
