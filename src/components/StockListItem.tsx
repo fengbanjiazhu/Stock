@@ -24,7 +24,7 @@ const formatDataString = (str: string, tofixed: number = 1): number => {
 };
 
 function StockListItem({ stock }: StockListItem) {
-  const {} = useMutation(mutation, {
+  const [runMutation] = useMutation(mutation, {
     variables: {
       symbol: stock.symbol,
       user_id: "vadim",
@@ -35,7 +35,7 @@ function StockListItem({ stock }: StockListItem) {
   const positive = change > 0;
 
   const onFavorite = function () {
-    console.log("Pressed");
+    runMutation();
   };
 
   return (
